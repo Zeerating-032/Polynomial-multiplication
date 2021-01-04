@@ -50,7 +50,7 @@ def calculate(lis):
 	while length>=2:
 		has_calculated={}
 		a,b=lis[0],lis[1]
-		max_time=list(a.keys())[0]+list(b.keys())[0]
+		max_time=max(a.keys())+max(b.keys())
 		for i in range(max_time,-1,-1):#初始化相乘答案的dict
 			has_calculated[i]=0
 		for i in list(a.keys()):
@@ -70,10 +70,15 @@ def output(dict):
 		num,t_num=str(dict[i]),str(i)
 		out=out+num+'x^'+t_num+'+'
 	out=out[:-1]
+	if out[0]=="1":
+		out=out[1:]
+	if out.endswith("^1"):
+		out=out[:-2]
 	out=out.replace("+-","-")#一段轉化為簡寫的判斷
 	out=out.replace("x^0","")
-	out=out.replace("^1","")
-	out=out.replace("1x","x")
+	out=out.replace("^1+","+")
+	out=out.replace("^1-","-")
+	out=out.replace("+1x","+x")
 	out=out.replace("-1x","-x")
 	return out
 
