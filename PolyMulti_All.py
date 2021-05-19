@@ -34,7 +34,7 @@ class poly:
 		self.ky=list(dict.keys()) #key -> times 
 		self.ve=list(dict.values()) #value -> coefficient
 
-	def __mul__(p1, p2):	
+	def __mul__(p1, p2):
 		mx=p1.max_time+p2.max_time
 		has_calculated={i:fraction(0, 1) for i in range(mx, -1, -1)} #init result dict 
 		
@@ -68,8 +68,8 @@ class poly:
 
 
 def sperate(que): #arg:str
-	corrForm=re.findall("[x\d+-/.^()]", que) #格式檢查
-	if len(corrForm)!=len(que):
+	corrForm=re.match("^[x\d+-/.^()]+$", que) #格式檢查
+	if corrForm is None:
 		print("格式錯誤")
 		exit(0)
 
@@ -90,7 +90,7 @@ def to_p(all_eq): #arg:str list
 				a=re.match("([\S]*)x(\^[\d]+)?", i)
 				coe, times=a.group(1), a.group(2) #coe = coefficient
 				
-				if coe=="" or coe=="-": #have no coe or only negative sign 
+				if coe=="" or coe=="-": #have no coe or only negative sign
 					coe+="1"
 				
 				coe=stof(coe)
