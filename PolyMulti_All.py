@@ -67,7 +67,7 @@ class poly:
 		return out
 
 
-def sperate(que): #arg:str
+def separate(que): #arg:str
 	corrForm=re.match("^[x\d+-/.^()]+$", que) #格式檢查
 	if corrForm is None:
 		print("格式錯誤")
@@ -140,7 +140,7 @@ def iter_mul(p_list): #arg:poly list
 if __name__=="__main__":
 	question=input("輸入一段多項式，各式以小括號分開:")
 	
-	eqs=sperate(question)
+	eqs=separate(question)
 	
 	poly_li=to_p(eqs)
 	
