@@ -61,6 +61,7 @@ class poly:
 		out=out.replace("^1-","-")
 		out=out.replace("+1x","+x")
 		out=out.replace("-1x","-x")
+		out=out.replace("+(-", "-(")
 		if out.startswith("+"):
 			out=out[1:]
 		
